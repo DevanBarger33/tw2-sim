@@ -13,6 +13,10 @@ var trebuchet = unit(4000, 2000, 2000, 10, 30, 200, 250, 200, 20);
 var nobleman = unit(40000, 50000, 50000, 100, 30, 100, 50, 100, 180);
 var paladin = unit(0, 0, 0, 1, 150, 250, 400, 150, 360);
 
+var numAttSp, numAttSw, numAttAx, numAttAr, numAttLC, numAttMA, numAttHC, numAttRam, numAttCat, numAttBer, numAttTreb, numAttNob, numAttPal;
+
+var numDefSp, numDefSw, numDefAx, numDefAr, numDefLC, numDefMA, numDefHC, numDefRam, numDefCat, numDefBer, numDefTreb, numDefNob, numDefPal;
+
 // Creates a new unit object
 function unit(w,c,i,fs,a,id,cd,ad,rt) {
 	var troop = new Object();
@@ -29,121 +33,156 @@ function unit(w,c,i,fs,a,id,cd,ad,rt) {
 	return troop;
 }
 
-function getResources() {
-	var numAttackerSpear = document.getElementById('numAttackerSpear').value;
-	var numAttackerSword = document.getElementById('numAttackerSword').value;
-	var numAttackerAxe = document.getElementById('numAttackerAxe').value;
-	var numAttackerArcher = document.getElementById('numAttackerArcher').value;
-	var numAttackerLightCalvary = document.getElementById('numAttackerLightCalvary').value;
-	var numAttackerMountedArcher = document.getElementById('numAttackerMountedArcher').value;
-	var numAttackerHeavyCalvary = document.getElementById('numAttackerHeavyCalvary').value;
-	var numAttackerRam = document.getElementById('numAttackerRam').value;
-	var numAttackerCatapult = document.getElementById('numAttackerCatapult').value;
-	var numAttackerBerserker = document.getElementById('numAttackerBerserker').value;
-	var numAttackerTrebuchet = document.getElementById('numAttackerTrebuchet').value;
-	var numAttackerNoble = document.getElementById('numAttackerNoble').value;
-	var numAttackerPaladin = document.getElementById('numAttackerPaladin').value; 
-
-	var numDefenderSpear = document.getElementById('numDefenderSpear').value;
-	var numDefenderSword = document.getElementById('numDefenderSword').value;
-	var numDefenderAxe = document.getElementById('numDefenderAxe').value;
-	var numDefenderArcher = document.getElementById('numDefenderArcher').value;
-	var numDefenderLightCalvary = document.getElementById('numDefenderLightCalvary').value;
-	var numDefenderMountedArcher = document.getElementById('numDefenderMountedArcher').value;
-	var numDefenderHeavyCalvary = document.getElementById('numDefenderHeavyCalvary').value;
-	var numDefenderRam = document.getElementById('numDefenderRam').value;
-	var numDefenderCatapult = document.getElementById('numDefenderCatapult').value;
-	var numDefenderBerserker = document.getElementById('numDefenderBerserker').value;
-	var numDefenderTrebuchet = document.getElementById('numDefenderTrebuchet').value;
-	var numDefenderNoble = document.getElementById('numDefenderNoble').value;
-	var numDefenderPaladin = document.getElementById('numDefenderPaladin').value; 
-
-	document.getElementById('total-wood-attacker').innerHTML = (numAttackerSpear * spear.wood) + 
-														(numAttackerSword * sword.wood) + 
-														(numAttackerAxe * axe.wood) +
-														(numAttackerArcher * archer.wood) +
-														(numAttackerLightCalvary * lightCalvary.wood) +
-														(numAttackerMountedArcher * mountedArcher.wood) +
-														(numAttackerHeavyCalvary * heavyCalvary.wood) +
-														(numAttackerRam * ram.wood) +
-														(numAttackerCatapult * catapult.wood) +
-														(numAttackerBerserker * berserker.wood) +
-														(numAttackerTrebuchet * trebuchet.wood) +
-														(numAttackerNoble * nobleman.wood) +
-														(numAttackerPaladin * paladin.wood); 
-
-	document.getElementById('total-clay-attacker').innerHTML = (numAttackerSpear * spear.clay) + 
-														(numAttackerSword * sword.clay) + 
-														(numAttackerAxe * axe.clay) +
-														(numAttackerArcher * archer.clay) +
-														(numAttackerLightCalvary * lightCalvary.clay) +
-														(numAttackerMountedArcher * mountedArcher.clay) +
-														(numAttackerHeavyCalvary * heavyCalvary.clay) +
-														(numAttackerRam * ram.clay) +
-														(numAttackerCatapult * catapult.clay) +
-														(numAttackerBerserker * berserker.clay) +
-														(numAttackerTrebuchet * trebuchet.clay) +
-														(numAttackerNoble * nobleman.clay) +
-														(numAttackerPaladin * paladin.clay);
-
-	document.getElementById('total-iron-attacker').innerHTML = (numAttackerSpear * spear.iron) + 
-														(numAttackerSword * sword.iron) + 
-														(numAttackerAxe * axe.iron) +
-														(numAttackerArcher * archer.iron) +
-														(numAttackerLightCalvary * lightCalvary.iron) +
-														(numAttackerMountedArcher * mountedArcher.iron) +
-														(numAttackerHeavyCalvary * heavyCalvary.iron) +
-														(numAttackerRam * ram.iron) +
-														(numAttackerCatapult * catapult.iron) +
-														(numAttackerBerserker * berserker.iron) +
-														(numAttackerTrebuchet * trebuchet.iron) +
-														(numAttackerNoble * nobleman.iron) +
-														(numAttackerPaladin * paladin.iron);
-
-	document.getElementById('total-wood-defender').innerHTML = (numDefenderSpear * spear.wood) + 
-														(numDefenderSword * sword.wood) + 
-														(numDefenderAxe * axe.wood) +
-														(numDefenderArcher * archer.wood) +
-														(numDefenderLightCalvary * lightCalvary.wood) +
-														(numDefenderMountedArcher * mountedArcher.wood) +
-														(numDefenderHeavyCalvary * heavyCalvary.wood) +
-														(numDefenderRam * ram.wood) +
-														(numDefenderCatapult * catapult.wood) +
-														(numDefenderBerserker * berserker.wood) +
-														(numDefenderTrebuchet * trebuchet.wood) +
-														(numDefenderNoble * nobleman.wood) +
-														(numDefenderPaladin * paladin.wood); 
-
-	document.getElementById('total-clay-defender').innerHTML = (numDefenderSpear * spear.clay) + 
-														(numDefenderSword * sword.clay) + 
-														(numDefenderAxe * axe.clay) +
-														(numDefenderArcher * archer.clay) +
-														(numDefenderLightCalvary * lightCalvary.clay) +
-														(numDefenderMountedArcher * mountedArcher.clay) +
-														(numDefenderHeavyCalvary * heavyCalvary.clay) +
-														(numDefenderRam * ram.clay) +
-														(numDefenderCatapult * catapult.clay) +
-														(numDefenderBerserker * berserker.clay) +
-														(numDefenderTrebuchet * trebuchet.clay) +
-														(numDefenderNoble * nobleman.clay) +
-														(numDefenderPaladin * paladin.clay);
-
-	document.getElementById('total-iron-defender').innerHTML = (numDefenderSpear * spear.iron) + 
-														(numDefenderSword * sword.iron) + 
-														(numDefenderAxe * axe.iron) +
-														(numDefenderArcher * archer.iron) +
-														(numDefenderLightCalvary * lightCalvary.iron) +
-														(numDefenderMountedArcher * mountedArcher.iron) +
-														(numDefenderHeavyCalvary * heavyCalvary.iron) +
-														(numDefenderRam * ram.iron) +
-														(numDefenderCatapult * catapult.iron) +
-														(numDefenderBerserker * berserker.iron) +
-														(numDefenderTrebuchet * trebuchet.iron) +
-														(numDefenderNoble * nobleman.iron) +
-														(numDefenderPaladin * paladin.iron);
-}
-
 function battle(){
+
+	numAttSp = $("#numAttackerSpear").val();
+	numAttSw = $("#numAttackerSword").val();
+	numAttAx = $("#numAttackerAxe").val();
+	numAttAr = $("#numAttackerArcher").val();
+	numAttLC = $("#numAttackerLightCalvary").val();
+	numAttMA = $("#numAttackerMountedArcher").val();
+	numAttHC = $("#numAttackerHeavyCalvary").val();
+	numAttRam = $("#numAttackerRam").val();
+	numAttCat = $("#numAttackerCatapult").val();
+	numAttBer = $("#numAttackerBerserker").val();
+	numAttTreb = $("#numAttackerTrebuchet").val();
+	numAttNob = $("#numAttackerNoble").val();
+	numAttPal = $("#numAttackerPaladin").val(); 
+
+	numDefSp = $("#numDefenderSpear").val();
+	numDefSw = $("#numDefenderSword").val();
+	numDefAx = $("#numDefenderAxe").val();
+	numDefAr = $("#numDefenderArcher").val();
+	numDefLC = $("#numDefenderLightCalvary").val();
+	numDefMA = $("#numDefenderMountedArcher").val();
+	numDefHC = $("#numDefenderHeavyCalvary").val();
+	numDefRam = $("#numDefenderRam").val();
+	numDefCat = $("#numDefenderCatapult").val();
+	numDefBer = $("#numDefenderBerserker").val();
+	numDefTreb = $("#numDefenderTrebuchet").val();
+	numDefNob = $("#numDefenderNoble").val();
+	numDefPal = $("#numDefenderPaladin").val();
+
 	getResources();
+	getFarmSpace();
 }
 
+function getFarmSpace() {
+	/* Farm space for the attacker */
+	$("#total-attacker-farm-space").text((numAttSp * spear.farmSpace) + 
+									(numAttSw * sword.farmSpace) + 
+									(numAttAx * axe.farmSpace) +
+									(numAttAr * archer.farmSpace) +
+									(numAttLC * lightCalvary.farmSpace) +
+									(numAttMA * mountedArcher.farmSpace) +
+									(numAttHC * heavyCalvary.farmSpace) +
+									(numAttRam * ram.farmSpace) +
+									(numAttCat * catapult.farmSpace) +
+									(numAttBer * berserker.farmSpace) +
+									(numAttTreb * trebuchet.farmSpace) +
+									(numAttNob * nobleman.farmSpace) +
+									(numAttPal * paladin.farmSpace));
+
+	/* Farm space for the defender */
+	$("#total-defender-farm-space").text((numDefSp * spear.farmSpace) + 
+									(numDefSw * sword.farmSpace) + 
+									(numDefAx * axe.farmSpace) +
+									(numDefAr * archer.farmSpace) +
+									(numDefLC * lightCalvary.farmSpace) +
+									(numDefMA * mountedArcher.farmSpace) +
+									(numDefHC * heavyCalvary.farmSpace) +
+									(numDefRam * ram.farmSpace) +
+									(numDefCat * catapult.farmSpace) +
+									(numDefBer * berserker.farmSpace) +
+									(numDefTreb * trebuchet.farmSpace) +
+									(numDefNob * nobleman.farmSpace) +
+									(numDefPal * paladin.farmSpace));
+}
+
+function getResources() { 
+	console.log(numAttSp);
+	
+	$("#total-wood-attacker").text((numAttSp * spear.wood) + 
+									(numAttSw * sword.wood) + 
+									(numAttAx * axe.wood) +
+									(numAttAr * archer.wood) +
+									(numAttLC * lightCalvary.wood) +
+									(numAttMA * mountedArcher.wood) +
+									(numAttHC * heavyCalvary.wood) +
+									(numAttRam * ram.wood) +
+									(numAttCat * catapult.wood) +
+									(numAttBer * berserker.wood) +
+									(numAttTreb * trebuchet.wood) +
+									(numAttNob * nobleman.wood) +
+									(numAttPal * paladin.wood)); 
+
+	$("#total-clay-attacker").text((numAttSp * spear.clay) + 
+									(numAttSw * sword.clay) + 
+									(numAttAx * axe.clay) +
+									(numAttAr * archer.clay) +
+									(numAttLC * lightCalvary.clay) +
+									(numAttMA * mountedArcher.clay) +
+									(numAttHC * heavyCalvary.clay) +
+									(numAttRam * ram.clay) +
+									(numAttCat * catapult.clay) +
+									(numAttBer * berserker.clay) +
+									(numAttTreb * trebuchet.clay) +
+									(numAttNob * nobleman.clay) +
+									(numAttPal * paladin.clay));
+
+	$("#total-iron-attacker").text((numAttSp * spear.iron) + 
+									(numAttSw * sword.iron) + 
+									(numAttAx * axe.iron) +
+									(numAttAr * archer.iron) +
+									(numAttLC * lightCalvary.iron) +
+									(numAttMA * mountedArcher.iron) +
+									(numAttHC * heavyCalvary.iron) +
+									(numAttRam * ram.iron) +
+									(numAttCat * catapult.iron) +
+									(numAttBer * berserker.iron) +
+									(numAttTreb * trebuchet.iron) +
+									(numAttNob * nobleman.iron) +
+									(numAttPal * paladin.iron));
+
+	$("#total-wood-defender").text((numDefSp * spear.wood) + 
+									(numDefSw * sword.wood) + 
+									(numDefAx * axe.wood) +
+									(numDefAr * archer.wood) +
+									(numDefLC * lightCalvary.wood) +
+									(numDefMA * mountedArcher.wood) +
+									(numDefHC * heavyCalvary.wood) +
+									(numDefRam * ram.wood) +
+									(numDefCat * catapult.wood) +
+									(numDefBer * berserker.wood) +
+									(numDefTreb * trebuchet.wood) +
+									(numDefNob * nobleman.wood) +
+									(numDefPal * paladin.wood)); 
+
+	$("#total-clay-defender").text((numDefSp * spear.clay) + 
+									(numDefSw * sword.clay) + 
+									(numDefAx * axe.clay) +
+									(numDefAr * archer.clay) +
+									(numDefLC * lightCalvary.clay) +
+									(numDefMA * mountedArcher.clay) +
+									(numDefHC * heavyCalvary.clay) +
+									(numDefRam * ram.clay) +
+									(numDefCat * catapult.clay) +
+									(numDefBer * berserker.clay) +
+									(numDefTreb * trebuchet.clay) +
+									(numDefNob * nobleman.clay) +
+									(numDefPal * paladin.clay));
+
+	$("#total-iron-defender").text((numDefSp * spear.iron) + 
+									(numDefSw * sword.iron) + 
+									(numDefAx * axe.iron) +
+									(numDefAr * archer.iron) +
+									(numDefLC * lightCalvary.iron) +
+									(numDefMA * mountedArcher.iron) +
+									(numDefHC * heavyCalvary.iron) +
+									(numDefRam * ram.iron) +
+									(numDefCat * catapult.iron) +
+									(numDefBer * berserker.iron) +
+									(numDefTreb * trebuchet.iron) +
+									(numDefNob * nobleman.iron) +
+									(numDefPal * paladin.iron));
+}
